@@ -9,6 +9,8 @@ echo "==> Installing Truffle languages"
 ./bin/gu -c install org.graalvm.r
 ./bin/gu -c install org.graalvm.ruby
 
+echo "==> [ENVIRONMENT] $(env)"
+
 echo "==> Replacing conda openjdk package with GraalVM"
-mv /srv/conda/jre /srv/conda/jre.openjdk
-ln -s "$(pwd)/jre" /srv/conda
+mv "$CONDA_PREFIX/jre" "$CONDA_PREFIX/jre.openjdk"
+ln -s "$(pwd)/jre" "$CONDA_PREFIX"
