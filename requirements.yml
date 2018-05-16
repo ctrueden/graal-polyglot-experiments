@@ -1,0 +1,8 @@
+name: graal
+channels:
+  - damianavila82
+  - conda-forge
+dependencies:
+  - ipywidgets
+  - beakerx
+  - rise

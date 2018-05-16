@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "==> Installing GraalVM"
+curl -fsLO https://github.com/oracle/graal/releases/download/vm-1.0.0-rc1/graalvm-ce-1.0.0-rc1-linux-amd64.tar.gz
+tar xf graalvm-ce-1.0.0-rc1-linux-amd64.tar.gz
+cd graalvm-1.0.0-rc1
+
+echo "==> Installing Truffle languages"
+./bin/gu -c install org.graalvm.python
+./bin/gu -c install org.graalvm.r
+./bin/gu -c install org.graalvm.ruby
+
+echo "==> Replacing conda openjdk package with GraalVM"
+mv /srv/conda/jre /srv/conda/jre.openjdk
+ln -s "$(pwd)/jre" /srv/conda
